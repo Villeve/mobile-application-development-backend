@@ -31,7 +31,7 @@ router.post("/", auth.required, (req, res) => {
 // @route GET api/universities
 // @desc get Universities
 // @access Private
-router.get("/", auth.required, (req, res) => {
+router.get("/", (req, res) => {
   University.find({}).then(result => {
     res.json(result)
   })
@@ -57,7 +57,7 @@ router.get("/:id", auth.required, (req, res) => {
 // @route DELETE api/universities/id
 // @desc DELETE one university
 // @access Private
-router.delete("/:id", (req, res) => {
+router.delete("/:id", auth.required, (req, res) => {
   University.findByIdAndRemove(req.params.id)
     .then(result => {
       res.status(204).end()

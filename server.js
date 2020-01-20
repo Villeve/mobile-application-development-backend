@@ -18,6 +18,7 @@ app.use(
 );
 app.use(bodyParser.json());
 
+/*
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header(
@@ -26,7 +27,7 @@ app.use(function(req, res, next) {
   );
   next();
 });
-
+*/
 // DB Config
 const db = require("./config/keys").mongoURI;
 

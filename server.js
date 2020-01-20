@@ -28,6 +28,7 @@ app.use(function(req, res, next) {
   next();
 });
 */
+
 // DB Config
 const db = require("./config/keys").mongoURI;
 

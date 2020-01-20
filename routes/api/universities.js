@@ -31,7 +31,7 @@ router.post("/", auth.required, (req, res) => {
 // @route GET api/universities
 // @desc get Universities
 // @access Private
-router.get("/", (req, res) => {
+router.get("/", auth.required, (req, res) => {
   University.find({}).then(result => {
     res.json(result)
   })

@@ -10,7 +10,7 @@ const middleware = require("./utils/middleware");
 //const courses = require("./routes/api/courses");
 //const comments = require("./routes/api/comments");
 const app = express();
-const cors = require('cors')
+//const cors = require('cors')
 // Bodyparser middleware
 app.use(
   bodyParser.urlencoded({
@@ -45,7 +45,7 @@ mongoose
 app.use(cors())
 // Passport middleware
 app.use(passport.initialize());
-app.use(middleware.tokenExtractor);
+//app.use(middleware.tokenExtractor);
 // Passport config
 require("./config/passport")(passport);
 // Routes

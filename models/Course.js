@@ -6,6 +6,10 @@ const CourseSchema = new Schema({
     type: String,
     required: true
   },
+  facultyId: {
+    type: String,
+    required: true
+  },
   code: {
     type: String,
     required: true
@@ -21,10 +25,6 @@ const CourseSchema = new Schema({
   objectives: {
     type: String,
     required: true
-  },
-  comments: {
-      type: Array,
-      required: false
   },
   date: {
     type: Date,

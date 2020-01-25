@@ -41,32 +41,16 @@ router.get("/:id", auth.required, (req, res) => {
   })
   .catch(err => console.log(err));
 });
-/*
-// @route GET api/faculties/id
-// @desc Get one faculty
-// @access Private
-router.get("/:id", auth.required, (req, res) => {
-  const id = req.params.id;
-  University.find({}).then(universities => {
-    universities.forEach(university => {
-      if(university.id === id) {
-        res.json(university)
-      }
-      else {
-        res.status(404).end()
-      }
-    })
-  })
-})
-// @route DELETE api/universities/id
-// @desc DELETE one university
+
+// @route DELETE api/faculties/id
+// @desc DELETE one faculty
 // @access Private
 router.delete("/:id", auth.required, (req, res) => {
-  University.findByIdAndRemove(req.params.id)
+  Faculty.findByIdAndRemove(req.params.id)
     .then(result => {
       res.status(204).end()
     })
   .catch(err => console.log(err));
 });
-*/
+
 module.exports = router;

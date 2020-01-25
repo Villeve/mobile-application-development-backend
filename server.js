@@ -5,7 +5,7 @@ const passport = require("passport");
 
 const users = require("./routes/api/users");
 const universities = require("./routes/api/universities");
-//const faculties = require("./routes/api/faculties");
+const faculties = require("./routes/api/faculties");
 //const courses = require("./routes/api/courses");
 //const comments = require("./routes/api/comments");
 const app = express();

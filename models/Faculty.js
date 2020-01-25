@@ -6,9 +6,10 @@ const FacultySchema = new Schema({
     type: String,
     required: true
   },
-  courses: {
-      type: Array,
-      required: false
+  university: {
+      type: String,
+      required: true,
+      default: ""
   },
   date: {
     type: Date,

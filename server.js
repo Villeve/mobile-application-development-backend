@@ -51,7 +51,7 @@ require("./config/passport")(passport);
 // Routes
 app.use("/api/users", users);
 app.use("/api/universities", universities);
-//app.use("/api/faculties", faculties);
+app.use("/api/faculties", faculties);
 //app.use("/api/courses", courses);
 //app.use("/api/comments", comments);
 

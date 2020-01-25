@@ -5,11 +5,12 @@ const passport = require("passport");
 
 const users = require("./routes/api/users");
 const universities = require("./routes/api/universities");
+const middleware = require("./utils/middleware");
 //const faculties = require("./routes/api/faculties");
 //const courses = require("./routes/api/courses");
 //const comments = require("./routes/api/comments");
 const app = express();
-
+const cors = require('cors')
 // Bodyparser middleware
 app.use(
   bodyParser.urlencoded({
@@ -41,8 +42,10 @@ mongoose
   .then(() => console.log("MongoDB successfully connected"))
   .catch(err => console.log(err));
 
+app.use(cors())
 // Passport middleware
 app.use(passport.initialize());
+app.use(middleware.tokenExtractor);
 // Passport config
 require("./config/passport")(passport);
 // Routes

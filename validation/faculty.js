@@ -9,7 +9,7 @@ module.exports = function validateFaculty(data) {
     errors.name = "Name field is required";
   }
   if (Validator.isEmpty(data.university)) {
-    errors.name = "Name field is required";
+    errors.name = "University field is required";
   }
 return {
     errors,

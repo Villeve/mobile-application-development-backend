@@ -4,7 +4,7 @@ const router = express.Router();
 // Load input validation
 const validateFacultyInput = require("../../validation/faculty");
 // Load University model
-const Faculty = require("../../models/University");
+const Faculty = require("../../models/Faculty");
 const auth = require("./auth")
 
 // @route POST api/faculties
@@ -17,8 +17,9 @@ router.post("/", auth.required, (req, res) => {
     if (!isValid) {
       return res.status(400).json(errors);
     }
-    const newFaculty = new University({
-        name: req.body.name
+    const newFaculty = new Faculty({
+        name: req.body.name,
+        university: req.body.university
     });
     newFaculty
         .save()
@@ -26,17 +27,21 @@ router.post("/", auth.required, (req, res) => {
         .catch(err => console.log(err));
 });
 
-/*
+
 // @route GET api/faculties
 // @desc get faculties
 // @access Private
-router.get("/", auth.required, (req, res) => {
-  University.find({}).then(result => {
-    res.json(result)
+router.get("/:id", auth.required, (req, res) => {
+  const universityId = req.params.id
+  console.log(universityId)
+  Faculty.find({}).then(result => {
+    return res.json(
+        result.filter(faculty => faculty.university == universityId)
+    )
   })
   .catch(err => console.log(err));
 });
-
+/*
 // @route GET api/faculties/id
 // @desc Get one faculty
 // @access Private

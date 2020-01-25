@@ -42,10 +42,10 @@ mongoose
   .then(() => console.log("MongoDB successfully connected"))
   .catch(err => console.log(err));
 
-app.use(cors())
+//app.use(cors())
 // Passport middleware
 app.use(passport.initialize());
-app.use(middleware.tokenExtractor);
+//app.use(middleware.tokenExtractor);
 // Passport config
 require("./config/passport")(passport);
 // Routes

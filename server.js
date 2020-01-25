@@ -5,7 +5,7 @@ const passport = require("passport");
 
 const users = require("./routes/api/users");
 const universities = require("./routes/api/universities");
-const middleware = require("./utils/middleware");
+const middleware = require("./utils/middleware")
 //const faculties = require("./routes/api/faculties");
 //const courses = require("./routes/api/courses");
 //const comments = require("./routes/api/comments");
@@ -45,7 +45,7 @@ mongoose
 app.use(cors())
 // Passport middleware
 app.use(passport.initialize());
-//app.use(middleware.tokenExtractor);
+app.use(middleware.tokenExtractor);
 // Passport config
 require("./config/passport")(passport);
 // Routes

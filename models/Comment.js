@@ -6,6 +6,14 @@ const CommentSchema = new Schema({
     type: String,
     required: true
   },
+  postedBy: {
+    type: String,
+    required: true
+  },
+  courseId: {
+    type: String,
+    required: true
+  },
   date: {
     type: Date,
     default: Date.now

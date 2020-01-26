@@ -7,7 +7,7 @@ const users = require("./routes/api/users");
 const universities = require("./routes/api/universities");
 const faculties = require("./routes/api/faculties");
 const courses = require("./routes/api/courses");
-//const comments = require("./routes/api/comments");
+const comments = require("./routes/api/comments");
 const app = express();
 //const cors = require('cors')
 // Bodyparser middleware
@@ -52,7 +52,7 @@ app.use("/api/users", users);
 app.use("/api/universities", universities);
 app.use("/api/faculties", faculties);
 app.use("/api/courses", courses);
-//app.use("/api/comments", comments);
+app.use("/api/comments", comments);
 
 const port = process.env.PORT || 5000; // process.env.port is Heroku's port if you choose to deploy the app there
 

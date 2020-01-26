@@ -19,7 +19,7 @@ router.post("/", auth.required, (req, res) => {
     }
     const newComment = new Comment({
         postedBy: req.body.postedBy,
-        courseId: req.body.facultyId,
+        courseId: req.body.courseId,
         content: req.body.content
     });
     newComment

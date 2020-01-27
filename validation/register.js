@@ -32,7 +32,6 @@ if (!Validator.equals(data.password, data.password2)) {
     errors.password2 = "Passwords must match";
   }
 // isAdmin checks
-console.log(data.userType, typeof(data.userType))
 if (!Validator.equals(data.userType, "0")) {
   errors.password2 = "userType must be 0 (normal)";
 }

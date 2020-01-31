@@ -8,6 +8,7 @@ const University = require("../../models/University");
 const auth = require("./auth")
 
 const checkIsInRole = (role) => (req, res, next) => {
+  console.log("THIS REQ:", req)
   if(!req.user || !req.user.role === role) {
     console.log("AAAAAAA", req.user)
     return

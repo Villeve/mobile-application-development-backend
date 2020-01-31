@@ -9,12 +9,14 @@ const User = require("../../models/User");
 const auth = require("./auth")
 
 const checkIsInRole = (role) => (req, res, next) => {
-  console.log("THIS REQ:", req)
+  console.log("THIS REQ:", req.payload)
   User.findOne(req.payload.id).then(user => {
+    console.log(user)
     if (user.role !== "1") {
       console.log("USER NOT AUTHORIZED")
       return
     }
+    else return next()
   })
   /*
   if(!req.user || !req.user.role === role) {
@@ -22,7 +24,7 @@ const checkIsInRole = (role) => (req, res, next) => {
     return
   }
   */
- return next()
+ 
 }
 
 // @route POST api/universities

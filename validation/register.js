@@ -6,6 +6,7 @@ module.exports = function validateRegisterInput(data) {
 // Convert empty fields to an empty string so we can use validator functions
   data.name = !isEmpty(data.name) ? data.name : "";
   data.email = !isEmpty(data.email) ? data.email : "";
+  data.role = !isEmpty(data.role) ? data.role : "";
   data.password = !isEmpty(data.password) ? data.password : "";
   data.password2 = !isEmpty(data.password2) ? data.password2 : "";
 // Name checks
@@ -32,9 +33,12 @@ if (!Validator.equals(data.password, data.password2)) {
     errors.password2 = "Passwords must match";
   }
 // isAdmin checks
-if (!Validator.equals(data.userType, "0")) {
-  errors.password2 = "userType must be 0 (normal)";
+if (!Validator.isEmpty(data.role)) {
+  if (!Validator.equals(data.role, "0")) {
+    errors.role = "role must be 0 (normal)";
+  }
 }
+
 
 return {
     errors,

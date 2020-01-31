@@ -27,7 +27,7 @@ router.post("/register", (req, res) => {
           name: req.body.name,
           email: req.body.email,
           password: req.body.password,
-          userType: req.body.userType
+          role: req.body.role
         });
   // Hash password before saving in database
         bcrypt.genSalt(10, (err, salt) => {
@@ -83,7 +83,7 @@ router.post("/login", (req, res) => {
                 success: true,
                 token: "Bearer " + token,
                 name: user.name,
-                userType: user.userType
+                role: user.role
               });
             }
           );
@@ -95,5 +95,5 @@ router.post("/login", (req, res) => {
       });
     });
   });
-
+   // Tee get user endpoint joka palauttaa roolin
   module.exports = router;

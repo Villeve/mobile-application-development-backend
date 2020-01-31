@@ -7,6 +7,15 @@ const validateUniversityInput = require("../../validation/university");
 const University = require("../../models/University");
 const auth = require("./auth")
 
+const checkIsInRole = (role) => (req, res, next) => {
+  if(!req.user || !req.user.role === role) {
+    console.log("AAAAAAA", req.user)
+    return
+  }
+
+  return next()
+}
+
 // @route POST api/universities
 // @desc create University
 // @access Private
@@ -57,7 +66,7 @@ router.get("/:id", auth.required, (req, res) => {
 // @route DELETE api/universities/id
 // @desc DELETE one university
 // @access Private
-router.delete("/:id", auth.required, (req, res) => {
+router.delete("/:id", auth.required, checkIsInRole("1"), (req, res) => {
   University.findByIdAndRemove(req.params.id)
     .then(result => {
       res.status(204).end()

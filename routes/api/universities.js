@@ -5,16 +5,24 @@ const router = express.Router();
 const validateUniversityInput = require("../../validation/university");
 // Load University model
 const University = require("../../models/University");
+const User = require("../../models/User");
 const auth = require("./auth")
 
 const checkIsInRole = (role) => (req, res, next) => {
   console.log("THIS REQ:", req)
+  User.findOne(req.payload.id).then(user => {
+    if (user.role !== "1") {
+      console.log("USER NOT AUTHORIZED")
+      return
+    }
+  })
+  /*
   if(!req.user || !req.user.role === role) {
     console.log("AAAAAAA", req.user)
     return
   }
-
-  return next()
+  */
+ return next()
 }
 
 // @route POST api/universities

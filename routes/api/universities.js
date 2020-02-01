@@ -8,20 +8,10 @@ const University = require("../../models/University");
 const User = require("../../models/User");
 const auth = require("./auth")
 
-const checkIsInRole = (role) => (req, res, next) => {
-  console.log("THIS REQ:", req.payload)
-  const id = req.payload.id
-  User.find({}).then(result => {
-    console.log("################", result)
-  })
-  User.findOne({ _id: id}).then(user => {
-    console.log(user)
-    if (user.role !== "1") {
-      console.log("USER NOT AUTHORIZED")
-      return res.status(401).json();
-    }
-    else return next()
-  })
+const checkIsInRole = () => (req, res, next) => {
+  User.findOne({ _id: req.payload.id }).then(user => 
+    user.role !== "1" ? res.status(401).json() : next()
+  )
   /*
   if(!req.user || !req.user.role === role) {
     console.log("AAAAAAA", req.user)

@@ -11,11 +11,14 @@ const auth = require("./auth")
 const checkIsInRole = (role) => (req, res, next) => {
   console.log("THIS REQ:", req.payload)
   const id = req.payload.id
+  User.find({}).then(result => {
+    console.log("################", result)
+  })
   User.findOne({ _id: id}).then(user => {
     console.log(user)
     if (user.role !== "1") {
       console.log("USER NOT AUTHORIZED")
-      return
+      return res.status(401).json();
     }
     else return next()
   })

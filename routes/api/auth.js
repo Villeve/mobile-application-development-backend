@@ -28,8 +28,7 @@ const auth = {
     getToken: getTokenFromHeaders,
     credentialsRequired: false,
   }),
+  checkUserIsAdmin
 };
-
-
 
 module.exports = auth;

@@ -10,7 +10,7 @@ const auth = require("./auth")
 // @route POST api/courses
 // @desc create Course
 // @access Private
-router.post("/", auth.required, (req, res) => {
+router.post("/", auth.required, auth.checkUserIsAdmin(), (req, res) => {
     // Form validation
     const { errors, isValid } = validateCourseInput(req.body);
     // Check validation
@@ -48,7 +48,7 @@ router.get("/:id", auth.required, (req, res) => {
 // @route DELETE api/courses/id
 // @desc DELETE one course
 // @access Private
-router.delete("/:id", auth.required, (req, res) => {
+router.delete("/:id", auth.required, auth.checkUserIsAdmin(), (req, res) => {
   Course.findByIdAndRemove(req.params.id)
     .then(result => {
       res.status(204).end()

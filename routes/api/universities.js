@@ -11,7 +11,7 @@ const auth = require("./auth")
 // @route POST api/universities
 // @desc create University
 // @access Private
-router.post("/", auth.required, (req, res) => {
+router.post("/", auth.required, auth.checkUserIsAdmin(), (req, res) => {
     // Form validation
     const { errors, isValid } = validateUniversityInput(req.body);
     // Check validation

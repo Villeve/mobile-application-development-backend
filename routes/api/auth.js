@@ -1,5 +1,11 @@
-
 const jwt = require('express-jwt');
+const User = require("../../models/User");
+
+const checkUserIsAdmin = () => (req, res, next) => {
+  User.findOne({ _id: req.payload.id }).then(user => 
+    user.role !== "1" ? res.status(401).json() : next()
+  )
+}
 
 const getTokenFromHeaders = (req) => {
   const { headers: { authorization } } = req;
@@ -23,5 +29,7 @@ const auth = {
     credentialsRequired: false,
   }),
 };
+
+
 
 module.exports = auth;

@@ -5,21 +5,8 @@ const router = express.Router();
 const validateUniversityInput = require("../../validation/university");
 // Load University model
 const University = require("../../models/University");
-const User = require("../../models/User");
 const auth = require("./auth")
 
-const checkIsInRole = () => (req, res, next) => {
-  User.findOne({ _id: req.payload.id }).then(user => 
-    user.role !== "1" ? res.status(401).json() : next()
-  )
-  /*
-  if(!req.user || !req.user.role === role) {
-    console.log("AAAAAAA", req.user)
-    return
-  }
-  */
- 
-}
 
 // @route POST api/universities
 // @desc create University
@@ -71,7 +58,7 @@ router.get("/:id", auth.required, (req, res) => {
 // @route DELETE api/universities/id
 // @desc DELETE one university
 // @access Private
-router.delete("/:id", auth.required, checkIsInRole("1"), (req, res) => {
+router.delete("/:id", auth.required, auth.checkUserIsAdmin, (req, res) => {
   University.findByIdAndRemove(req.params.id)
     .then(result => {
       res.status(204).end()

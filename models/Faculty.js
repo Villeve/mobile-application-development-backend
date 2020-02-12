@@ -7,8 +7,8 @@ const FacultySchema = new Schema({
     required: true
   },
   university: {
-      type: String,
-      required: true
+    type: String,
+    required: true
   },
   date: {
     type: Date,
